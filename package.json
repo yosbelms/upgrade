@@ -1,0 +1,24 @@
+{
+    "author"      : "Yosbel Marin",
+    "name"        : "upgrade",
+    "version"     : "0.1.0",
+    "license"     : "MIT",
+    "description" : "Replaces classes with functional progressive upgrades",
+    "repository"  : "https://github.com/yosbelms/upgrade.git",
+
+    "main"        : "upgrade.js",
+
+    "devDependencies": {
+        "jasmine" : "2.3.2"
+    },
+
+    "scripts": {
+        "test": "node test/run.js"
+    },
+
+    "keywords": [
+         "class",
+         "functional",
+         "oo"
+    ]
+}
