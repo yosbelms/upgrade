@@ -3,7 +3,7 @@
     "name"        : "upgrade",
     "version"     : "0.1.0",
     "license"     : "MIT",
-    "description" : "Replaces classes with functional progressive upgrades",
+    "description" : "Functional object upgrades to replace JavaScript classes",
     "repository"  : "https://github.com/yosbelms/upgrade.git",
 
     "main"        : "upgrade.js",
@@ -13,7 +13,7 @@
     },
 
     "scripts": {
-        "test": "node test/run.js"
+        "test": "node test/test.js"
     },
 
     "keywords": [
