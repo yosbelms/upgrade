@@ -6,17 +6,17 @@
             obj = obj || {}
             fn(obj)
             // apply config after apply upgrade
-            cfg && upgrade.copy(obj, cfg)
+            cfg && copy(obj, cfg)
             return obj
         }
     }
 
-    // returns whether an upgrade has been applied to an objects or not, by duck-typing checking
-    upgrade.in = function $in(obj, upgrade) {
-        var name, ref = upgrade({})
+    // returns whether an object satisfaces an upgrade method structure by duck-typing checking
+    upgrade.is = function is(obj, upgrade) {
+        var name, type, ref = upgrade({})
         for (name in ref) {
-            if (ref.hasOwnProperty(name)) {
-                if (!(obj.hasOwnProperty(name) && typeof ref[name] === typeof obj[name])) {
+            if (ref.hasOwnProperty(name) && typeof ref[name] === 'function') {
+                if (!obj.hasOwnProperty(name) && typeof obj[name] !== 'function') {
                     return false
                 }
             }
@@ -25,14 +25,12 @@
     }
 
     // copies object properties from src to dst, return dst
-    upgrade.copy = typeof Object.assign === 'function'
-        ? Object.assign
-        : function copy(dst, src) {
-            for (var name in src) {
-                src.hasOwnProperty(name) && (dst[name] = src[name])
-            }
-            return dst
+    function copy(dst, src) {
+        for (var name in src) {
+            src.hasOwnProperty(name) && (dst[name] = src[name])
         }
+        return dst
+    }
 
     // expose
     if (typeof module !== 'undefined') {
